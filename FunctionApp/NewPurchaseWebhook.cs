@@ -1,6 +1,7 @@
 using System.Net;
 using Azure;
 using Azure.Storage.Blobs;
+using FunctionApp;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
@@ -12,7 +13,7 @@ namespace Pluralsight.AzureFuncs
         [QueueOutput("neworders", Connection = "AzureWebJobsStorage")]
         public NewOrderMessage? Message { get; set; }
         public HttpResponseData? HttpResponse { get; set; }
-        [CosmosDBOutput("azurefuncs", "orders", Connection = "CosmosDbConnection")]
+        //[CosmosDBOutput("azurefuncs", "orders", Connection = "CosmosDbConnection")]
         public OrderDocument? OrderDocument { get; set; }
     }
 
@@ -26,12 +27,11 @@ namespace Pluralsight.AzureFuncs
             _logger = loggerFactory.CreateLogger<NewPurchaseWebhook>();
         }
 
-        record NewOrderWebhook(int productId, int quantity,
-            string customerName, string customerEmail, decimal purchasePrice);
+
+        record NewOrderWebhook(int productId, int quantity, string customerName, string customerEmail, decimal purchasePrice);
 
         [Function(nameof(NewPurchaseWebhook))]
-        public async Task<NewPurchaseWebhookResponse> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "purchase")] HttpRequestData req)
+        public async Task<NewPurchaseWebhookResponse> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "purchase")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -70,6 +70,7 @@ namespace Pluralsight.AzureFuncs
             };
         }
 
+
         [Function(nameof(GetPurchase))]
         public HttpResponseData GetPurchase(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "purchase/{orderId:guid}")] HttpRequestData req,
@@ -94,5 +95,8 @@ namespace Pluralsight.AzureFuncs
 
             return response;
         }
+
+
+
     }
 }
