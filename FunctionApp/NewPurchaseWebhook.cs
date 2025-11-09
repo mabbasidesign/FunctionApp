@@ -31,7 +31,7 @@ namespace Pluralsight.AzureFuncs
         record NewOrderWebhook(int productId, int quantity, string customerName, string customerEmail, decimal purchasePrice);
 
         [Function(nameof(NewPurchaseWebhook))]
-        public async Task<NewPurchaseWebhookResponse> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "purchase")] HttpRequestData req)
+        public async Task<NewPurchaseWebhookResponse> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "purchase/new")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -71,8 +71,8 @@ namespace Pluralsight.AzureFuncs
         }
 
 
-        [Function(nameof(GetPurchase))]
-        public HttpResponseData GetPurchase(
+        [Function(nameof(GetPurchaseTwo))]
+        public HttpResponseData GetPurchaseTwo(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "purchase/{orderId:guid}")] HttpRequestData req,
             [BlobInput("tickets/{orderId}.txt", Connection = "AzureWebJobsStorage")] BlobClient ticketClient,
             Guid orderId)
