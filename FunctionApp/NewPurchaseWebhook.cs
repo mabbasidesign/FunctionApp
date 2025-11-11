@@ -13,7 +13,7 @@ namespace Pluralsight.AzureFuncs
         [QueueOutput("neworders", Connection = "AzureWebJobsStorage")]
         public NewOrderMessage? Message { get; set; }
         public HttpResponseData? HttpResponse { get; set; }
-        //[CosmosDBOutput("azurefuncs", "orders", Connection = "CosmosDbConnection")]
+        [CosmosDBOutput("azurefuncs", "orders", Connection = "CosmosDbConnection")]
         public OrderDocument? OrderDocument { get; set; }
     }
 
