@@ -1,18 +1,19 @@
 using System.Net;
 using Azure;
 using Azure.Storage.Blobs;
-using FunctionApp;
+using AzureFuncs;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
-namespace Pluralsight.AzureFuncs
+namespace FunctionApp.AzureFuncs
 {
     public class NewPurchaseWebhookResponse
     {
         [QueueOutput("neworders", Connection = "AzureWebJobsStorage")]
         public NewOrderMessage? Message { get; set; }
         public HttpResponseData? HttpResponse { get; set; }
+
         [CosmosDBOutput("azurefuncs", "orders", Connection = "CosmosDbConnection")]
         public OrderDocument? OrderDocument { get; set; }
     }

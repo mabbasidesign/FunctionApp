@@ -4,7 +4,7 @@ using Azure.Storage.Blobs;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
-namespace Pluralsight.AzureFuncs
+namespace FunctionApp.AzureFuncs
 {
     public class OnNewBlob
     {

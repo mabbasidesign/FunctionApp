@@ -3,7 +3,7 @@ using Azure.Storage.Queues.Models;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
-namespace Pluralsight.AzureFuncs
+namespace AzureFuncs
 {
     public record NewOrderMessage(Guid orderId, int productId, int quantity,
         string customerName, string customerEmail, decimal purchasePrice);
