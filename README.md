@@ -1,30 +1,21 @@
-# Azure Functions Deep Dive (Learning Portfolio)
+FunctionApp
+FunctionApp is a collection of Azure Functions written in C# for automating business processes such as nightly reporting, order processing, email analysis, and webhook integrations. The app leverages Azure Functions' event-driven architecture to handle tasks like processing new orders, analyzing emails, generating reports, and responding to blob storage events. It is designed for scalability, maintainability, and easy integration with other Azure services.
 
-This repository contains my hands-on code and notes from the 
-**"Azure Functions Deep Dive"** course by **Mark Heath** on Pluralsight.
+Features:
 
-Each folder includes example Functions demonstrating different triggers, bindings, 
-and patterns in Azure Functions using .NET.
+Automated nightly report generation
+Email content analysis and processing
+Webhook endpoints for new purchases and custom events
+Order document management and processing
+Blob storage event handling
+Built with .NET 8 and Azure Functions SDK
+Getting Started:
 
----
+Clone the repository.
+Configure your local.settings.json for secrets and connection strings.
+Build and run locally using Visual Studio or Azure Functions Core Tools.
+Requirements:
 
-Topics Covered
-- HTTP, Blob, Queue, and Timer Triggers  
-- Input and Output Bindings  
-- Dependency Injection and Configuration  
-- Logging and Monitoring  
-- Durable Functions (fan-out/fan-in)  
-- Local testing with Azurite  
-- Deployment to Azure
-
----
-
-Tech Stack
-- .NET 8  
-- Azure Functions v4  
-- Azure Storage (Blob & Queue)  
-- Visual Studio / VS Code  
-- Azurite (local emulator)
-
----
-
+.NET 8 SDK
+Azure Functions Core Tools (for local development)
+Azure subscription (for deployment)
